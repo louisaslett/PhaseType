@@ -15,7 +15,10 @@ The entire of the MCMC portion of the code has been written in optimised C for h
 Consider a continuous-time Markov chain (CTMC) on a finite discrete state space of size $n+1$, where one of the states is absorbing.
 Without loss of generality the generator of the chain can be written in the form:
 
-$$\mathbf{T} = \left( \begin{array}{cc} \mathbf{S} & \mathbf{s} \\ \mathbf{0}^\mathrm{T} & 0 \end{array} \right)$$
+$$\mathbf{T} = \left( \begin{array}{cc}
+  \mathbf{S} & \mathbf{s} \\
+  \mathbf{0}^\mathrm{T} & 0
+\end{array} \right)$$
 
 where $\mathbf{S}$ is the $n \times n$ matrix of transition rates between non-absorbing states; $\mathbf{s}$ is an $n$ dimensional vector of absorption rates; and $\mathbf{0}$ is an $n$ dimensional vector of zeros.
 We take $\boldsymbol{\pi}$ as the initial state distribution: an $n$ dimensional vector of probabilities $\left(\sum_i \pi_i=1\right)$ such that $\pi_i$ is the probability of the chain starting in state $i$.
@@ -24,15 +27,15 @@ Then, we define a *Phase-type distribution* to be the distribution of the time t
 Thus, a Phase-type distribution is a positively supported univariate distribution having distribution and density functions:
 
 $$\begin{array}{rcl}
-  F_X(x) &=& 1 - \boldsymbol{\pi}^\mathrm{T} \exp\{x \mathbf{S}\} \mathbf{e}\\
-  f_X(x) &=& \boldsymbol{\pi}^\mathrm{T} \exp\{x \mathbf{S}\} \mathbf{s}
+  F_X(x) &=& 1 - \boldsymbol{\pi}^\mathrm{T} \exp\\{x \mathbf{S}\\} \mathbf{e}\\
+  f_X(x) &=& \boldsymbol{\pi}^\mathrm{T} \exp\\{x \mathbf{S}\\} \mathbf{s}
 \end{array}
 \qquad \mbox{for } x \in [0,\infty)$$
 
-where $\mathbf{e}$ is an $n$ dimensional vector of $1$'s; $x$ is the time to absorption (or equivalently first-passage time to state $n+1$); and $\exp\{x \mathbf{S}\}$ is the matrix exponential.
+where $\mathbf{e}$ is an $n$ dimensional vector of $1$'s; $x$ is the time to absorption (or equivalently first-passage time to state $n+1$); and $\exp\\{x \mathbf{S}\\}$ is the matrix exponential.
 We denote that a random variable $X$ is Phase-type distributed with parameters $\boldsymbol{\pi}$ and $\mathbf{T}$ by $X \sim \mathrm{PHT}(\boldsymbol{\pi},\mathbf{T})$.
 
-Note that $\displaystyle \sum_{j=1}^n S_{ij} = -s_i \ \forall\,i$, so often a Phase-type is defined merely by providing $\mathbf{S}$, $\mathbf{T}$ then being implicitly known.
+Note that $\displaystyle \sum_{j=1}^n S_{ij} = -s_i \ \forall\\,i$, so often a Phase-type is defined merely by providing $\mathbf{S}$, $\mathbf{T}$ then being implicitly known.
 
 
 

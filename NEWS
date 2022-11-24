@@ -1,0 +1,29 @@
+PhaseType 0.1.4
+===============
+
+ * Fixes to enable reinclusion on CRAN.
+
+PhaseType 0.1.3
+===============
+
+ * Added ability to have constant multiple of parameters in the generator matrix for phtMCMC2().
+ * Improved numerical stability of ECS method in phtMCMC2().
+ * Added extra parameter correctness checks to all functions.
+ * Corrected some errors in citations.
+
+PhaseType 0.1.2
+===============
+
+ * Minor fix due to updated ggplot2 package.
+
+PhaseType 0.1.1
+===============
+
+ * Minor fix because of incorrect calls into private R API.
+
+PhaseType 0.1.0
+===============
+
+ * First public release
+ * phtMCMC() function for Bayesian inference on dense CTMC generator
+ * phtMCMC2() function for Bayesian inference on structured CTMC generator

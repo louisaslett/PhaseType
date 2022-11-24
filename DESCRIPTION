@@ -1,11 +1,10 @@
 Package: PhaseType
-Title: Inference for Phase-type Distributions
-Description: Functions to perform Bayesian inference on absorption time
-        data for Phase-type distributions.  Plans to expand this to
-        include frequentist inference and simulation tools.
-URL: http://www.louisaslett.com/PhaseType/, https://github.com/louisaslett/PhaseType
+Title: Inference for Phase-Type Distributions
+Description: Functions to perform Bayesian inference on absorption time data for
+             Phase-type distributions.
+URL: https://www.louisaslett.com/PhaseType/, https://github.com/louisaslett/PhaseType
 BugReports: https://github.com/louisaslett/PhaseType/issues
-Version: 0.1.4
+Version: 0.2.0
 Maintainer: Louis Aslett <louis.aslett@durham.ac.uk>
 Author: Louis Aslett <louis.aslett@durham.ac.uk>
 Imports: coda, ggplot2, reshape

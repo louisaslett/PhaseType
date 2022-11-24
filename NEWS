@@ -1,7 +1,10 @@
-PhaseType 0.1.4
+PhaseType 0.2.0
 ===============
 
- * Fixes to enable reinclusion on CRAN.
+ * Multiple fixes to enable reinclusion on CRAN.
+ * In particular dependence on archived HI package removed by bringing in GPL-2
+   C code for ARMS originally written by Wally Gilks, with updates by Louis
+   Aslett to pass strict warning and CRAN checks.
 
 PhaseType 0.1.3
 ===============

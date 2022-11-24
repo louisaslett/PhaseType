@@ -10,7 +10,7 @@ A collection of tools for working with Phase-type Distributions, including sampl
 \tabular{ll}{
 Package: \tab PhaseType\cr
 Type: \tab Package\cr
-Version: \tab 0.1.0\cr
+Version: \tab 0.2.0\cr
 Date: \tab 2011-10-12\cr
 License: \tab GPL-2 | GPL-3\cr
 LazyLoad: \tab yes\cr
@@ -19,10 +19,10 @@ LazyLoad: \tab yes\cr
 %~~ functions ~~
 }
 \author{
-Louis J. M. Aslett, \email{louis@maths.tcd.ie} (\url{http://www.louisaslett.com})
+Louis J. M. Aslett, \email{louis.aslett@durham.ac.uk} (\url{https://www.louisaslett.com})
 }
 \references{
-Aslett, L. J. M. & Wilson, S. P. (2011), Markov chain Monte Carlo for inference on Phase-type models, Technical report, Trinity College Dublin (\emph{pending journal submission}).
+Aslett, L. J. M. (2012), MCMC for Inference on Phase-type and Masked System Lifetime Models. Ph.D. thesis, Trinity College Dublin..
 
 Bladt, M., Gonzalez, A. & Lauritzen, S. L. (2003), \sQuote{The estimation of phase-type related functionals using Markov chain Monte Carlo methods}, \emph{Scandinavian Journal of Statistics} \bold{2003}(4), 280-300.
 }

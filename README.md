@@ -1,9 +1,9 @@
 # PhaseType R package :package:
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![license](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![metacran version](http://www.r-pkg.org/badges/version/PhaseType)](http://cran.r-project.org/web/packages/PhaseType/index.html)
-[![metacran downloads](http://cranlogs.r-pkg.org/badges/PhaseType?color=brightgreen)](http://cran.r-project.org/web/packages/PhaseType/index.html)
-[CRAN check result](http://cran.r-project.org/web/checks/check_results_PhaseType.html)
+[![metacran version](http://www.r-pkg.org/badges/version/PhaseType)](https://CRAN.R-project.org/package=PhaseType)
+[![metacran downloads](http://cranlogs.r-pkg.org/badges/PhaseType?color=brightgreen)](https://CRAN.R-project.org/package=PhaseType)
+<!--[CRAN check result](https://cran.r-project.org/web/checks/check_results_PhaseType.html)-->
 
 This is a package for working with Phase-type (PHT) distributions in the R programming language.
 The entire of the MCMC portion of the code has been written in optimised C for higher performance and very low memory use, whilst being easy to call from wrapper R functions.
@@ -62,7 +62,7 @@ install.packages("PhaseType")
 
 Installing directly from [GitHub](https://github.com) is not supported by the
 `install.packages` command. You could use the
-[devtools](http://cran.r-project.org/web/packages/devtools/index.html) package
+[devtools](https://CRAN.R-project.org/package=devtools) package
 to install the development version if desired.
 
 ```r

@@ -38,9 +38,9 @@ phtMCMC2(x, T, beta, nu, zeta, n, censored=rep(FALSE, length(x)),
 }
   \item{method}{
     the sampling method to use for the latent stochastic process:
-    
+
     \code{method="ECS"} is Exact Conditional Sampling as described in Aslett and Wilson (2011);
-    
+
     \code{method="MHRS"} is Metropolis-Hastings + Rejection Sampling as in the original work of Bladt et al. (2003).
 % UNTESTED SO EXCLUDED FROM DOCS; and \code{method="DCS"} is a novel adaptation of the Direct Conditional Sampling technique described by Hobolth (2009).
 }
@@ -57,7 +57,7 @@ phtMCMC2(x, T, beta, nu, zeta, n, censored=rep(FALSE, length(x)),
 \details{
 Usage of this function effectively involves specification of the structure of an absorbing CTMC generator matrix, the parameter priors in Gamma form and providing absorption time data.
 
-The generator matrix \code{T} is specified as a matrix containing strings (ie text) naming the parameters in each element of the matrix.  This allows constraints to be imposed (see Aslett & Wilson, 2011) and is best illustrated by the example below which is \href{http://www.louisaslett.com/PhaseType}{more fully discussed on this webpage}.
+The generator matrix \code{T} is specified as a matrix containing strings (ie text) naming the parameters in each element of the matrix.  This allows constraints to be imposed (see Aslett & Wilson, 2011) and is best illustrated by the example below which is \href{https://www.louisaslett.com/PhaseType/}{more fully discussed on this webpage}.
 }
 \value{
   \code{phtMCMC2} returns an object of class \code{"phtMCMC"}.
@@ -76,12 +76,14 @@ The generator matrix \code{T} is specified as a matrix containing strings (ie te
   \item{MHit}{the number of iterations used if \code{method="MHRS"}}
 }
 \references{
-Aslett, L. J. M. and Wilson, S. P. (2011), \sQuote{Markov chain Monte Carlo for inference on Phase-type models}, ISI 2011 Proceedings, (\url{http://www.louisaslett.com/dl/Aslett_LJM_Markov_chain_Monte_Carlo_for_Inference_on_Phase-type_Models_ISI_proceedings.pdf}).
+Aslett, L. J. M. and Wilson, S. P. (2011), \sQuote{Markov chain Monte Carlo for inference on Phase-type models}, ISI 2011 Proceedings, (\url{https://www.louisaslett.com/Proceedings/ISI_2011.html}).
+
+Aslett, L. J. M. (2012), \sQuote{MCMC for Inference on Phase-type and Masked System Lifetime Models}, PhD Thesis, Trinity College Dublin (\url{https://www.louisaslett.com/PhD_Thesis.html}).
 
 Bladt, M., Gonzalez, A. and Lauritzen, S. L. (2003), \sQuote{The estimation of Phase-type related functionals using Markov chain Monte Carlo methods}, \emph{Scandinavian Actuarial Journal} 2003(4), 280-300.
 }
 \author{
-Louis J.M. Aslett \email{louis@maths.tcd.ie} (\url{http://www.louisaslett.com/})
+Louis J.M. Aslett \email{louis.aslett@durham.ac.uk} (\url{https://www.louisaslett.com/})
 }
 \note{
 Please feel free to email \email{louis@maths.tcd.ie} with any queries or if you encounter errors when running this function.
@@ -93,10 +95,10 @@ Please feel free to email \email{louis@maths.tcd.ie} with any queries or if you 
 }
 \examples{
 # Some pre-simulated absorption times
-x <- c(1.45353415045187, 1.85349532001349, 2.01084961814576, 0.505725921290172, 
-1.56252630012213, 3.41158665930278, 1.52674487509487, 4.3428662377235, 
-8.03208018151311, 2.41746547476986, 0.38828086509283, 2.61513815012196, 
-3.39148865480856, 1.82705817807965, 1.42090953713845, 0.851438991331866, 
+x <- c(1.45353415045187, 1.85349532001349, 2.01084961814576, 0.505725921290172,
+1.56252630012213, 3.41158665930278, 1.52674487509487, 4.3428662377235,
+8.03208018151311, 2.41746547476986, 0.38828086509283, 2.61513815012196,
+3.39148865480856, 1.82705817807965, 1.42090953713845, 0.851438991331866,
 0.0178808867191894, 0.632198596390046, 0.959910259815998, 1.83344199966323)
 
 # Prior on starting state

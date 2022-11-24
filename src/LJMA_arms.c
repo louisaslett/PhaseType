@@ -1,13 +1,16 @@
-/* adaptive rejection metropolis sampling */
+/*
+ * Adaptive Rejection Metropolis Sampling (ARMS)
+ * Refactored and updated code by Louis Aslett, based on the original
+ * research paper implementation by Wally Gilks.
+ * Code brought from GPL-2 licenced HI package which was archived on CRAN.
+ */
 
-/* *********************************************************************** */
-
-#include           <stdio.h>
-#include           <math.h>
-#include           <stdlib.h>
-#include           <R.h>
-
-/* *********************************************************************** */
+#include "LJMA_arms.h"
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <R.h>
+#include "utility.h"
 
 typedef struct point {    /* a point in the x,y plane */
   double x,y;             /* x and y coordinates */
@@ -16,8 +19,6 @@ typedef struct point {    /* a point in the x,y plane */
   int f;                  /* is y an evaluated point of log-density */
   struct point *pl,*pr;   /* envelope points to left and right of x */
 } POINT;
-
-/* *********************************************************************** */
 
 typedef struct envelope {  /* attributes of the entire rejection envelope */
   int cpoint;              /* number of POINTs in current envelope */
@@ -28,15 +29,11 @@ typedef struct envelope {  /* attributes of the entire rejection envelope */
   double *convex;          /* adjustment for convexity */
 } ENVELOPE;
 
-/* *********************************************************************** */
-
 typedef struct funbag { /* everything for evaluating log density          */
   void *mydata;      /* user-defined structure holding data for density */
   double (*myfunc)(double x, void *mydata);
                      /* user-defined function evaluating log density at x */
 } FUNBAG;
-
-/* *********************************************************************** */
 
 typedef struct metropolis { /* for metropolis step */
   int on;            /* whether metropolis is to be used */
@@ -44,30 +41,18 @@ typedef struct metropolis { /* for metropolis step */
   double yprev;      /* current log density at xprev */
 } METROPOLIS;
 
-/* *********************************************************************** */
-
-//#define RAND_MAX 2147483647      /* For Sun4 : remove this for some systems */
 #define XEPS  0.00001            /* critical relative x-value difference */
 #define YEPS  0.1                /* critical y-value difference */
 #define EYEPS 0.001              /* critical relative exp(y) difference */
 #define YCEIL 50.                /* maximum y avoiding overflow in exp(y) */
 
-/* *********************************************************************** */
-
 /* declarations for functions defined in this file */
-
 int arms_simple (int ninit, double *xl, double *xr,
                  double (*myfunc)(double x, void *mydata), void *mydata,
                  int dometrop, double *xprev, double *xsamp);
 
-int arms (double *xinit, int ninit, double *xl, double *xr,
-          double (*myfunc)(double x, void *mydata), void *mydata,
-          double *convex, int npoint, int dometrop, double *xprev, double *xsamp,
-          int nsamp, double *qcent, double *xcent, int ncent,
-          int *neval);
-
 int initial (double *xinit, int ninit, double xl, double xr, int npoint,
-	     FUNBAG *lpdf, ENVELOPE *env, double *convex, int *neval,
+             FUNBAG *lpdf, ENVELOPE *env, double *convex, int *neval,
              METROPOLIS *metrop);
 
 void sample(ENVELOPE *env, POINT *p);
@@ -786,6 +771,7 @@ double area(POINT *q)
   double a;
 
   if(q->pl == NULL){
+    a = 0.;
     /* this is leftmost point in envelope */
     REprintf("ERROR (LJMA_arms.c)(1): found erroneous leftmost point in envelope");
   } else if(q->pl->x == q->x){
@@ -851,7 +837,10 @@ double u_random()
 
 /* to return a standard uniform random number */
 {
-   return ((double)rand() + 0.5)/((double)RAND_MAX + 1.0);
+  LJMA_GetRNGstate();
+  double x = unif_rand();
+  LJMA_PutRNGstate();
+  return(x);
 }
 
 /* *********************************************************************** */

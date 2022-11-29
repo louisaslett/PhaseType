@@ -64,7 +64,9 @@ n <- 3
 # since starts in stationarity here).  Do more in practise!!
 res1 <- phtMCMC(x, n, dirpi, nu, zeta, 20, mhit=1)
 print(res1)
+\dontrun{
 plot(res1)
+}
 
 
 # SECOND: mechanistic model fit (Aslett and Wilson 2011)
@@ -83,5 +85,7 @@ zeta <- c("R"=16,"F"=16)
 # Perform 20 MCMC iterations.  Do more in practise!!
 res2 <- phtMCMC2(x, T, dirpi, nu, zeta, 20)
 print(res2)
+\dontrun{
 plot(res2)
+}
 }

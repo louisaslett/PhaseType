@@ -112,7 +112,9 @@ zeta <- c("R"=16,"F"=16)
 # Perform 20 MCMC iterations.  Do more in practice!!
 res <- phtMCMC2(x, T, dirpi, nu, zeta, 20)
 print(res)
+\dontrun{
 plot(res)
+}
 }
 \keyword{ phase-type }
 \keyword{ bayesian }

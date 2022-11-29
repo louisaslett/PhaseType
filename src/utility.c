@@ -22,7 +22,7 @@ void LJMA_LAPACKspace(int *n) {
 	//LJMA_LAPACK_work = (double *) R_alloc(LJMA_LAPACK_lwork, sizeof(double));
 	LJMA_LAPACK_work = (double *) Calloc(LJMA_LAPACK_lwork, double);
 }
-void LJMA_LAPACKspaceFree() {
+void LJMA_LAPACKspaceFree(void) {
 	Free(LJMA_LAPACK_work);
 }
 

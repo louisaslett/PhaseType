@@ -75,7 +75,7 @@ double logshift(double y, double y0);
 
 double perfunc(FUNBAG *lpdf, ENVELOPE *env, double x);
 
-double u_random();
+double u_random(void);
 
 /* *********************************************************************** */
 
@@ -833,7 +833,7 @@ double perfunc(FUNBAG *lpdf, ENVELOPE *env, double x)
 
 /* *********************************************************************** */
 
-double u_random()
+double u_random(void)
 
 /* to return a standard uniform random number */
 {

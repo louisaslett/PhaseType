@@ -6,7 +6,10 @@ URL: https://www.louisaslett.com/PhaseType/, https://github.com/louisaslett/Phas
 BugReports: https://github.com/louisaslett/PhaseType/issues
 Version: 0.2.0
 Maintainer: Louis Aslett <louis.aslett@durham.ac.uk>
-Author: Louis Aslett <louis.aslett@durham.ac.uk>
+Authors@R: c(person("Louis", "Aslett", email = "louis.aslett@durham.ac.uk",
+                    role = c("aut", "cre")),
+             person("Wally", "Gilks",
+                    role = "ctb"))
 Imports: coda, ggplot2, reshape
 Suggests: actuar
 License: GPL-2 | GPL-3

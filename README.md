@@ -50,7 +50,7 @@ Please feel free to:
 
 ## Install
 
-You can install the latest release directly from [CRAN](http://cran.r-project.org/web/packages/PhaseType/index.html).
+You can install the latest release directly from [CRAN](https://CRAN.R-project.org/package=PhaseType).
 
 ```r
 install.packages("PhaseType")

@@ -15,7 +15,7 @@ int LJMA_counter = 0;
 // The next two functions are for allocating the LAPACK work space when calling certain functions directly from R instead of via the outer Gibbs call
 void LJMA_LAPACKspace(int *n) {
 	char balanc = 'B', jobvl = 'V', jobvr = 'V', sense = 'B'; int lwork = -1, info; double work;
-	F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, NULL, n, NULL, NULL, NULL, n, NULL, n, NULL, NULL, NULL, NULL, NULL, NULL, &work, &lwork, NULL, &info);
+	F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, NULL, n, NULL, NULL, NULL, n, NULL, n, NULL, NULL, NULL, NULL, NULL, NULL, &work, &lwork, NULL, &info FCONE FCONE FCONE FCONE);
 	LJMA_LAPACK_lwork = (int) work;
 	F77_CALL(dgetri)(n, NULL, n, NULL, &work, &lwork, &info);
 	if((int) work > LJMA_LAPACK_lwork) LJMA_LAPACK_lwork = (int) work;
@@ -106,7 +106,7 @@ int LJMA_eigen(int *n, double *S, double *evals, double *Q, double *Qinv, double
 
 	// do eigen decomposition
 	char balanc = 'B', jobvl = 'V', jobvr = 'V', sense = 'B'; int info, ilo, ihi; double abnrm;
-	F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, A, n, evals, evalsi, Ql, n, Q, n, &ilo, &ihi, scale, &abnrm, rconde, rcondv, LJMA_LAPACK_work, &LJMA_LAPACK_lwork, iwork, &info);
+	F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, A, n, evals, evalsi, Ql, n, Q, n, &ilo, &ihi, scale, &abnrm, rconde, rcondv, LJMA_LAPACK_work, &LJMA_LAPACK_lwork, iwork, &info FCONE FCONE FCONE FCONE);
 		if(info != 0) {
 			Rprintf("Error (LJMA_eigen 01): failed LAPACK call, code=%d\n", info);
 			return(info);
@@ -114,7 +114,7 @@ int LJMA_eigen(int *n, double *S, double *evals, double *Q, double *Qinv, double
 
 	// Check none of the eigen values have an imaginary part & condition numbers are ok
 	//char cmach = 'E';
-	//double precision = F77_CALL(dlamch)(&cmach);
+	//double precision = F77_CALL(dlamch)(&cmach FCONE);
 	for(int i=0; i<*n; i++) {
 		if(evalsi[i] > 0) Rprintf("Error: imaginary part of eigenvalue %d found.\n", i+1);
 		//Rprintf("i=%d: eval = %e, err(eval) = %e, err(evect) = %e\n", i+1, evals[i], precision*abnrm/rconde[i], precision*abnrm/rcondv[i]);

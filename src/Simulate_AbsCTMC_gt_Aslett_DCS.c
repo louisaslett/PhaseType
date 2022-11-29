@@ -72,7 +72,7 @@ void LJMA_phtcdf(double *x, double *pi, double *Q, double *evals, double *Qinv_1
 		char trans = 'T';
 		double alpha = 1.0, beta = 0.0;
 		int incx = 1, incy = 1;
-		F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, pi, &incx, &beta, pi_Q, &incy);
+		F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, pi, &incx, &beta, pi_Q, &incy FCONE);
 
 		LJMA_phtcdf_opt(x, pi_Q, evals, Qinv_1, n, res);
 	} else {
@@ -444,12 +444,12 @@ void LJMA_reversestart(double *t, double *pi, double *s, double *Q, double *eval
 	double *a, denom = 0.0, *b;
 	a = workD; workD += *n; b = workD; workD += *n;
 	char trans = 'T'; double alpha = 1.0, beta = 0.0; int inc = 1;
-	F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, pi, &inc, &beta, a, &inc); // pi %*% e$vectors -> a
+	F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, pi, &inc, &beta, a, &inc FCONE); // pi %*% e$vectors -> a
 	// a %*% diag(exp(e$values*t),n,n) -> a
 	for(int i=0; i<*n; i++) {
 		a[i] = a[i] * exp(evals[i] * *t);
 	}
-	F77_CALL(dgemv)(&trans, n, n, &alpha, Qinv, n, a, &inc, &beta, b, &inc); // a %*% solve(e$vectors)
+	F77_CALL(dgemv)(&trans, n, n, &alpha, Qinv, n, a, &inc, &beta, b, &inc FCONE); // a %*% solve(e$vectors)
 	// then find denominator
 	for(int i=0; i<*n; i++) {
 		denom += b[i] * s[i];
@@ -505,5 +505,5 @@ void LJMA_stationary(double *S, int *n, double *res_pi, double *workD, int *work
 	e = workD; workD += *n;
 	for(int i=0; i<*n; i++) { e[i] = 1.0; }
 	char trans = 'T'; double alpha = 1.0, beta = 0.0; int inc = 1;
-	F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, e, &inc, &beta, res_pi, &inc);
+	F77_CALL(dgemv)(&trans, n, n, &alpha, Q, n, e, &inc, &beta, res_pi, &inc FCONE);
 }

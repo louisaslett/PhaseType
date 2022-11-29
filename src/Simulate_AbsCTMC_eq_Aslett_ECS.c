@@ -28,7 +28,7 @@ void LJMA_moveMass(double *p, double y_t_d, int j, double *P, double *Q, double 
 	char transN = 'N';
 	double oneD = 1.0, zeroD = 0.0;
 	int oneI = 1.0;
-	F77_CALL(dgemv)(&transN, &n, &n, &oneD, Q, &n, tmp, &oneI, &zeroD, p, &oneI);
+	F77_CALL(dgemv)(&transN, &n, &n, &oneD, Q, &n, tmp, &oneI, &zeroD, p, &oneI FCONE);
 
 	double sum = 0.0;
 	for(int i=0; i<n; i++) {
@@ -157,7 +157,7 @@ double LJMA_ECS_dens(double d, void *par) {
 	p = pars->workD; pars->workD += pars->n;
 
 	// p <- p_j^T %*% Q
-	F77_CALL(dgemv)(&transT, &(pars->n), &(pars->n), &oneD, pars->Q, &(pars->n), pars->p, &oneI, &zeroD, p, &oneI);
+	F77_CALL(dgemv)(&transT, &(pars->n), &(pars->n), &oneD, pars->Q, &(pars->n), pars->p, &oneI, &zeroD, p, &oneI FCONE);
 	// p <- pi %*% Q %*% exp(L*y)
 	for(int i=0; i<pars->n; i++) {
 		p[i] *= exp((pars->evals)[i]*(pars->y_t-d));
@@ -437,7 +437,7 @@ void LJMA_MHsample_Aslett2(double *y, int *censored, int *m, double *pi, double 
 
 	double *PjQSjjLinv; // Used for jump time distribution
 	PjQSjjLinv = workD; workD += *n * *n;
-	F77_CALL(dgemm)(&transN, &transN, n, n, n, &oneD, P, n, Q, n, &zeroD, PjQSjjLinv, n); // First P_j Q ... but compute as (P_j Q)^T = Q^T P_j^T because want to store column wise for fast traversal
+	F77_CALL(dgemm)(&transN, &transN, n, n, n, &oneD, P, n, Q, n, &zeroD, PjQSjjLinv, n FCONE FCONE); // First P_j Q ... but compute as (P_j Q)^T = Q^T P_j^T because want to store column wise for fast traversal
 	for(j=0; j<*n; j++) { // ... then over -S_{jj} + \lambda_i
 		for(i=0; i<*n; i++) {
 			PjQSjjLinv[j + i * *n] = evals_Sjj[i + j * *n] != 0.0 ? PjQSjjLinv[j + i * *n]/evals_Sjj[i + j * *n] : PjQSjjLinv[j + i * *n];

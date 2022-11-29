@@ -177,7 +177,7 @@ void LJMA_Gibbs(int *it, int *mhit, int *method, int *n, int *m, double *nu, dou
 	if(((*method & METHOD_ECS) | (*method & METHOD_DCS)) > 0) {
 		// LAPACK workspace ... make NULL calls to figure out optimal workspace size for speed
 		char balanc = 'B', jobvl = 'V', jobvr = 'V', sense = 'B'; int lwork = -1, info; double work;
-		F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, NULL, n, NULL, NULL, NULL, n, NULL, n, NULL, NULL, NULL, NULL, NULL, NULL, &work, &lwork, NULL, &info);
+		F77_CALL(dgeevx)(&balanc, &jobvl, &jobvr, &sense, n, NULL, n, NULL, NULL, NULL, n, NULL, n, NULL, NULL, NULL, NULL, NULL, NULL, &work, &lwork, NULL, &info FCONE FCONE FCONE FCONE);
 		LJMA_LAPACK_lwork = (int) work;
 		F77_CALL(dgetri)(n, NULL, n, NULL, &work, &lwork, &info);
 		if((int) work > LJMA_LAPACK_lwork) LJMA_LAPACK_lwork = (int) work;
@@ -325,11 +325,11 @@ void LJMA_Gibbs(int *it, int *mhit, int *method, int *n, int *m, double *nu, dou
 		if((*method & METHOD_MHRS) > 0) {
 			LJMA_MHsample_Bladt(y, censored, l, pi, S, s, Pfull, n, mhit, z, B, N, workD, workI);
 		} else if((*method & METHOD_DCS) > 0) {
-			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, b, &oneI, &zeroD, Qinv_b, &oneI);
+			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, b, &oneI, &zeroD, Qinv_b, &oneI FCONE);
 			LJMA_MHsample_Hobolth2(y, censored, l, pi, S, s, Q, evals, Qinv_b, b, Qinv, n, mhit, z, B, N, workD, workI);
 		} else if((*method & METHOD_ECS) > 0) {
-			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, s, &oneI, &zeroD, Qinv_s, &oneI);
-			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, e, &oneI, &zeroD, Qinv_1, &oneI);
+			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, s, &oneI, &zeroD, Qinv_s, &oneI FCONE);
+			F77_CALL(dgemv)(&transN, n, n, &oneD, Qinv, n, e, &oneI, &zeroD, Qinv_1, &oneI FCONE);
 			LJMA_MHsample_Aslett2(y, censored, l, pi, S, s, Q, evals, Qinv_s, Qinv_1, P, Pfull, n, z, B, N, workD, workI);
 		} else {
 			Rprintf("CRITICAL ERROR: Unknown sampling method (code = %d)\n\n", *method);

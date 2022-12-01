@@ -64,7 +64,7 @@ n <- 3
 # since starts in stationarity here).  Do more in practise!!
 res1 <- phtMCMC(x, n, dirpi, nu, zeta, 20, mhit=1)
 print(res1)
-\dontrun{
+\donttest{
 plot(res1)
 }
 
@@ -85,7 +85,7 @@ zeta <- c("R"=16,"F"=16)
 # Perform 20 MCMC iterations.  Do more in practise!!
 res2 <- phtMCMC2(x, TT, dirpi, nu, zeta, 20)
 print(res2)
-\dontrun{
+\donttest{
 plot(res2)
 }
 }

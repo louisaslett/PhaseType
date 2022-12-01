@@ -91,7 +91,7 @@ n <- 3
 # since starts in stationarity here).  Do more in practice!
 res <- phtMCMC(x, n, dirpi, nu, zeta, 6, mhit=1)
 print(res)
-\dontrun{
+\donttest{
 plot(res)
 }
 }

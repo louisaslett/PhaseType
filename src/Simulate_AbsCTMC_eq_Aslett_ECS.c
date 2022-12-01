@@ -3,7 +3,7 @@
 #include <R_ext/BLAS.h>
 #include <R_ext/Lapack.h>
 #include "utility.h"
-#include "LJMA_arms.h"
+#include "arms.h"
 #include "Simulate_AbsCTMC_eq_Aslett_ECS.h"
 #include "Simulate_AbsCTMC_gt_Aslett_DCS.h"
 

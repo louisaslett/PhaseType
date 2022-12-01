@@ -1,11 +1,13 @@
 /*
  * Adaptive Rejection Metropolis Sampling (ARMS)
- * Refactored and updated code by Louis Aslett, based on the original
+ * Code slightly updated by Louis Aslett, based on the original
  * research paper implementation by Wally Gilks.
- * Code brought from GPL-2 licenced HI package which was archived on CRAN.
+ * See: http://www1.maths.leeds.ac.uk/~wally.gilks/adaptive.rejection/web_page/Welcome.html#armspart
+ * This eliminates a previous dependency on the HI package which was archived
+ * from CRAN.
  */
 
-#include "LJMA_arms.h"
+#include "arms.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

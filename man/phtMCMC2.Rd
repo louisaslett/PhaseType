@@ -2,7 +2,7 @@
 \alias{phtMCMC2}
 \title{MCMC for structured Phase-type models}
 \description{
-Markov-chain Monte Carlo (MCMC) sampler for Bayesian inference on Phase-type models where data consist solely of time to entering the absorbing state (Aslett and Wilson, 2011).
+Markov-chain Monte Carlo (MCMC) sampler for Bayesian inference on Phase-type models where data consist solely of time to entering the absorbing state (Aslett and Wilson, 2011, and Aslett, 2012).
 
 Consider an m+1 state continuous-time Markov chain (CTMC) where the final (m+1 st) state is absorbing.  Then, given data consisting of first passage times to the last state, this function performs Bayesian inference on the rate parameters of the latent continuous-time Markov chain where the generator has some fixed structure.
 }

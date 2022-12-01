@@ -1,7 +1,9 @@
 Package: PhaseType
 Title: Inference for Phase-Type Distributions
 Description: Functions to perform Bayesian inference on absorption time data for
-             Phase-type distributions.
+             Phase-type distributions. The methods of Bladt et al (2003)
+             <doi:10.1080/03461230110106435> and Aslett (2012)
+             <https://www.louisaslett.com/PhD_Thesis.pdf> are provided.
 URL: https://www.louisaslett.com/PhaseType/, https://github.com/louisaslett/PhaseType
 BugReports: https://github.com/louisaslett/PhaseType/issues
 Version: 0.2.0

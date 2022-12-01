@@ -65,8 +65,7 @@ phtMCMC2 = function(x, TT, beta, nu, zeta, n, censored=rep(FALSE, length(x)), C=
 	# Organize correct method identification in C
 	methodKey <- data.frame(MHRS=1, ECS=2, DCS=4)
 	if(length(setdiff(method, names(methodKey)))>0) {
-		cat("Error: unknown sampling methods (", setdiff(method, names(methodKey)), ")\n    [Hint: Options are MHRS, ECS and DCS]\n\n")
-		return()
+		stop("Error: unknown sampling methods (", setdiff(method, names(methodKey)), ")\n    [Hint: Options are MHRS, ECS and DCS]\n\n")
 	}
 	methodNum <- sum(methodKey[unique(method)])
 

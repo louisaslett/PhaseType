@@ -74,7 +74,7 @@ plot(res1)
 dirpi <- c(1, 0, 0)
 
 # Define the structure of the Phase-type generator
-T <- matrix(c(0,"R","R",0,"F",0,0,0,"F",0,0,0,0,"F","F",0), 4)
+TT <- matrix(c(0,"R","R",0,"F",0,0,0,"F",0,0,0,0,"F","F",0), 4)
 
 # Gamma prior: shape hyperparameters (one per model parameter)
 nu <- list("R"=180, "F"=24)
@@ -83,7 +83,7 @@ nu <- list("R"=180, "F"=24)
 zeta <- c("R"=16,"F"=16)
 
 # Perform 20 MCMC iterations.  Do more in practise!!
-res2 <- phtMCMC2(x, T, dirpi, nu, zeta, 20)
+res2 <- phtMCMC2(x, TT, dirpi, nu, zeta, 20)
 print(res2)
 \dontrun{
 plot(res2)

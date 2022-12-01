@@ -50,7 +50,7 @@ If you want to specify structure on your generator (for example, to model a stoc
   \item{samples}{an object of class \code{"mcmc"} containing the MCMC samples for each parameter in the model.}
   \item{data}{a vector containing the original data used in the inference.}
   \item{vars}{a list of the distinct variable names in the CTMC generator.}
-  \item{T}{the naming scheme for the generator which was fitted.}
+  \item{TT}{the naming scheme for the generator which was fitted.}
   \item{beta}{the Dirichlet prior probability mass function on the starting states.}
   \item{nu}{a list of the prior nu hyper-parameters used when phtMCMC2 was called.}
   \item{zeta}{a list of the prior zeta hyper-parameters used when phtMCMC2 was called.}

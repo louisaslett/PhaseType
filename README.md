@@ -1,9 +1,9 @@
 # PhaseType R package :package:
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![license](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![metacran version](http://www.r-pkg.org/badges/version/PhaseType)](https://CRAN.R-project.org/package=PhaseType)
-[![metacran downloads](http://cranlogs.r-pkg.org/badges/PhaseType?color=brightgreen)](https://CRAN.R-project.org/package=PhaseType)
-<!--[CRAN check result](https://cran.r-project.org/web/checks/check_results_PhaseType.html)-->
+[![license](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![metacran version](https://www.r-pkg.org/badges/version/PhaseType)](https://cran.r-project.org/package=PhaseType)
+[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/PhaseType)](https://cran.r-project.org/package=PhaseType)
+[![PhaseType status badge](https://louisaslett.r-universe.dev/badges/PhaseType)](https://louisaslett.r-universe.dev/PhaseType)
 
 This is a package for working with Phase-type (PHT) distributions in the R programming language.
 The entire of the MCMC portion of the code has been written in optimised C for higher performance and very low memory use, whilst being easy to call from wrapper R functions.

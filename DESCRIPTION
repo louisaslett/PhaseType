@@ -6,7 +6,7 @@ Description: Functions to perform Bayesian inference on absorption time data for
              <https://www.louisaslett.com/PhD_Thesis.pdf> are provided.
 URL: https://www.louisaslett.com/PhaseType/, https://github.com/louisaslett/PhaseType
 BugReports: https://github.com/louisaslett/PhaseType/issues
-Version: 0.2.1
+Version: 0.3.0
 Maintainer: Louis Aslett <louis.aslett@durham.ac.uk>
 Authors@R: c(person("Louis", "Aslett", email = "louis.aslett@durham.ac.uk",
                     role = c("aut", "cre")),

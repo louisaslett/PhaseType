@@ -60,10 +60,13 @@ install.packages("PhaseType")
 
 ## Install development version (not recommended)
 
-Installing directly from [GitHub](https://github.com) is not supported by the
-`install.packages` command. You could use the
-[devtools](https://CRAN.R-project.org/package=devtools) package
-to install the development version if desired.
+You can get the very latest version from R-universe:
+
+```r
+install.packages("PhaseType", repos = c("https://louisaslett.r-universe.dev", "https://cloud.r-project.org"))
+```
+
+Installing directly from [GitHub](https://github.com) is not supported by the `install.packages` command, but if you wish to compile from source then you could use the [devtools](https://CRAN.R-project.org/package=devtools) package:
 
 ```r
 install.packages("remotes")
@@ -77,7 +80,7 @@ so historic source can be downloaded from there.
 
 ## Citation
 
-If you use this software, please cite the following:
+If you use this software, please use the following citation:
 
 Aslett, L. J. M. (2012), MCMC for Inference on Phase-type and Masked System Lifetime Models, PhD thesis, Trinity College Dublin.
 
